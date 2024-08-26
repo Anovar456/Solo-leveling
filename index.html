@@ -67,16 +67,18 @@
             font-family: 'Bebas Neue', cursive;
         }
 
-        .time {
-            display: inline-block;
-            min-width: 50px;
+        .clock {
             font-size: 2rem;
             color: #e0b0ff;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        .time {
+            min-width: 50px;
         }
 
         .colon {
             font-size: 2rem;
-            color: #e0b0ff;
         }
     </style>
 </head>
@@ -89,11 +91,9 @@
                     <div class="date" id="date"></div>
                 </div>
                 <div class="clock">
-                    <div class="time" id="hour"></div>
-                    <div class="colon">:</div>
-                    <div class="time" id="min"></div>
-                    <div class="colon">:</div>
-                    <div class="time" id="sec"></div>
+                    <span class="time" id="hour"></span><span class="colon">:</span>
+                    <span class="time" id="min"></span><span class="colon">:</span>
+                    <span class="time" id="sec"></span>
                 </div>
             </div>
         </div>
