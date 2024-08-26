@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Bebas+Neue&family=Press+Start+2P&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solo Leveling Themed Greeting</title>
+    <title>Salutation Solo Leveling</title>
 
     <style>
         /*CSS RESETS*/
@@ -49,8 +49,19 @@
             transform: translateY(-5px);
         }
 
-        .clock, .date, .greet {
-            display: inline-block;
+        .greet-date, .clock {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .greet {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ffb7c5;
+            margin-bottom: 5px;
+        }
+
+        .date {
             font-size: 1.5rem;
             color: #d1c6ff;
             font-family: 'Bebas Neue', cursive;
@@ -67,20 +78,16 @@
             font-size: 2rem;
             color: #e0b0ff;
         }
-
-        .greet {
-            font-size: 1.8rem;
-            color: #ffb7c5;
-        }
-
     </style>
 </head>
 <body>
     <div class="full-table">
         <div class="table-cell">
             <div class="card">
-                <div class="greet" id="greet"></div>
-                <div class="date" id="date"></div>
+                <div class="greet-date">
+                    <div class="greet" id="greet"></div>
+                    <div class="date" id="date"></div>
+                </div>
                 <div class="clock">
                     <div class="time" id="hour"></div>
                     <div class="colon">:</div>
@@ -95,7 +102,7 @@
     <script>
         function date() {
             var today = new Date();
-            document.getElementById('date').innerHTML = today.toDateString();
+            document.getElementById('date').innerHTML = today.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         }
 
         function clock() {
@@ -112,11 +119,11 @@
             var hrs = today.getHours();
             var greet;
             if (hrs < 12)
-                greet = 'Good Morning, Shadow Monarch';
+                greet = 'Bonjour';
             else if (hrs >= 12 && hrs <= 17)
-                greet = 'Good Afternoon, Shadow Monarch';
+                greet = 'Bon après-midi';
             else if (hrs >= 17 && hrs <= 24)
-                greet = 'Good Evening, Shadow Monarch';
+                greet = 'Bonsoir';
 
             document.getElementById('greet').innerHTML = greet;
             document.getElementById('hour').innerHTML = hour;
