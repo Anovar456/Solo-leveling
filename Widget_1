@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Bebas+Neue&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling Themed Greeting</title>
+
+    <style>
+        /*CSS RESETS*/
+        body{
+            background-color: #0c0c0d;
+            line-height: 1.6;
+            color: #ffffff;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        /*CSS START*/
+        .full-table {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .table-cell {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .card {
+            padding: 20px 30px;
+            border-radius: 10px;
+            background: #1b1b1f;
+            width: 85vw;
+            color: #ffffff;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(72, 72, 93, 0.7);
+            border: 2px solid #413f54;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 25px rgba(144, 144, 255, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .clock, .date, .greet {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #d1c6ff;
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        .time {
+            display: inline-block;
+            min-width: 50px;
+            font-size: 2rem;
+            color: #e0b0ff;
+        }
+
+        .colon {
+            font-size: 2rem;
+            color: #e0b0ff;
+        }
+
+        .greet {
+            font-size: 1.8rem;
+            color: #ffb7c5;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="full-table">
+        <div class="table-cell">
+            <div class="card">
+                <div class="greet" id="greet"></div>
+                <div class="date" id="date"></div>
+                <div class="clock">
+                    <div class="time" id="hour"></div>
+                    <div class="colon">:</div>
+                    <div class="time" id="min"></div>
+                    <div class="colon">:</div>
+                    <div class="time" id="sec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function date() {
+            var today = new Date();
+            document.getElementById('date').innerHTML = today.toDateString();
+        }
+
+        function clock() {
+            var today = new Date();
+            var hour = zeros(twelveHour(today.getHours()));
+            var minutes = zeros(today.getMinutes());
+            var seconds = zeros(today.getSeconds());
+            if(today.getHours() >=12){
+                seconds += " PM";
+            } else {
+                seconds += " AM";
+            }
+
+            var hrs = today.getHours();
+            var greet;
+            if (hrs < 12)
+                greet = 'Good Morning, Shadow Monarch';
+            else if (hrs >= 12 && hrs <= 17)
+                greet = 'Good Afternoon, Shadow Monarch';
+            else if (hrs >= 17 && hrs <= 24)
+                greet = 'Good Evening, Shadow Monarch';
+
+            document.getElementById('greet').innerHTML = greet;
+            document.getElementById('hour').innerHTML = hour;
+            document.getElementById('min').innerHTML = minutes;
+            document.getElementById('sec').innerHTML = seconds;
+        }
+
+        function twelveHour(hour) {
+            if (hour > 12) {
+                return hour -= 12;
+            } else if (hour === 0) {
+                return hour = 12;
+            } else {
+                return hour;
+            }
+        }
+
+        function zeros(num) {
+            if (num < 10) {
+                num = '0' + num;
+            }
+            return num;
+        }
+
+        function dateTime() {
+            date();
+            clock();
+            setTimeout(dateTime, 500);
+        }
+
+        dateTime();
+    </script>
+</body>
+</html>
